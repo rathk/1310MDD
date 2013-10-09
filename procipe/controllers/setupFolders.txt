@@ -1,0 +1,1 @@
+This document used in order to create initial MVC structure, since pushing to Github will not allow the file folders to be uploaded with no content.  All main folders have this file in them during initial commit, but will be removed after that point.
