@@ -9,8 +9,13 @@ class viewModel
 		
 	}
 	public function getView($pagename='', $data=array())
-		{
-			include $pagename;
-		}
+	{
+		include $pagename;
+	}
+
+	public function changeView($page)
+	{
+		//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?'.$page'>';
+	}
 }
 ?>

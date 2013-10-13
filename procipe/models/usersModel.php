@@ -16,6 +16,20 @@ class usersModel
 		}
 	}// -- End construct function -- //
 
+	// -- Session Handling Database Calls -- //
+	public function getUser($user_name){
+		$statement = $this->db->prepare("SELECT id AS id FROM users WHERE user_name = '$user_name'");
+		if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($rows as $row){
+				return $row['id'];
+			}
+		}else{
+			return 'unknown';
+		}
+	}
+	// -- End Session Handling --//
+
 	// -- Sanitize username & password to guard against SQL injection -- //
 	public function val_criteria($string){
 		if(get_magic_quotes_gpc()){
@@ -49,6 +63,20 @@ class usersModel
         }else{
             return false;
         }
+	}// -- End password validation -- //
+
+	// -- Authorize validated username and password -- //
+	public function authorize_user($user_name, $user_pass){
+		$statement = $this->db->prepare("SELECT user_salt AS val, user_pass AS id FROM users WHERE (user_name = '$user_name')");
+		if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($rows as $row){
+				if(MD5($row['val'] . $user_pass) == $row['id']){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }
 ?>

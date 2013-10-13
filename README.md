@@ -3,6 +3,10 @@
 
 Full Sail Mobile Device Development Class - Rath Kaikala - Project: Procipe
 
+SQL Dump file names include the date the dump was created.  Ensure that you are using the most current SQL dump file, as that will be the one that all of the most up-to-date code is utilizing.
+
+The most current SQL dump as of 10/12/13 is 'procipe10-12-137-46 PM.sql'.
+
 Instructions for viewing the API Proof of Concept:
 
 1.  Save the 1310MDD folder into your htdocs folder in MAMP.
