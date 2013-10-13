@@ -7,6 +7,9 @@ SQL Dump file names include the date the dump was created.  Ensure that you are 
 
 The most current SQL dump as of 10/12/13 is 'procipe10-12-137-46 PM.sql'.
 
+Testing Username: Tester
+Testing Password: Password@1
+
 Instructions for viewing the API Proof of Concept:
 
 1.  Save the 1310MDD folder into your htdocs folder in MAMP.
