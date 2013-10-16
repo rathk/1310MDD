@@ -10,7 +10,7 @@ body {
   font-size: 100%; }
 
 body {
-  background: white;
+  background: #751820;
   color: #222222;
   padding: 0;
   margin: 0;
@@ -1321,11 +1321,11 @@ button, .button {
   padding-bottom: 0.8125em;
   padding-left: 1.5em;
   font-size: 1em;
-  background-color: #2ba6cb;
+  background-color: #737a37;
   border-color: #2284a1;
   color: white; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #2284a1; }
+    background-color: #a7b345; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: white; }
   button.secondary, .button.secondary {
@@ -1497,7 +1497,7 @@ form .row textarea.columns {
 /* Label Styles */
 label {
   font-size: 0.875em;
-  color: #4d4d4d;
+  color: #000000;
   cursor: pointer;
   display: block;
   font-weight: 500;
@@ -4125,13 +4125,13 @@ ul.pagination {
   border-color: #d9d9d9;
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: #f2f2f2; }
+  background: #b69866; }
   .panel > :first-child {
     margin-top: 0; }
   .panel > :last-child {
     margin-bottom: 0; }
   .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
-    color: #333333; }
+    color: #751820; }
   .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
     line-height: 1;
     margin-bottom: 0.625em; }

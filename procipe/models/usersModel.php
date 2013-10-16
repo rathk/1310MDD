@@ -65,6 +65,12 @@ class usersModel
         }
 	}// -- End password validation -- //
 
+	// -- Validate email address to allowable format -- //
+	public function val_email($new_email){
+		
+	}
+	// -- End validate email address to allowable format -- //
+
 	// -- Authorize validated username and password -- //
 	public function authorize_user($user_name, $user_pass){
 		$statement = $this->db->prepare("SELECT user_salt AS val, user_pass AS id FROM users WHERE (user_name = '$user_name')");
