@@ -9,6 +9,6 @@ $page_title = "Procipe Login";
 		<input type="text" name="username" id="username" maxlength="20"/><br/>
 	<label for="password">Password:</label></br>
 		<input type = "password" name="password" id="password" /><br/>
-	<input type="submit" name="submit" value="Log In" />
-<p>Don't have an account?&nbsp;<a href="?na=new">Sign Up</a>&nbsp;for free!</p>
+	<input type="submit" name="submit" value="Log In" class="small button"/>
+<p>Don't have an account?&nbsp;<a href="?na=new" class="small button">Sign Up</a>&nbsp;for free!</p>
 </form>
