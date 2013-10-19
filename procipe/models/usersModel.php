@@ -56,15 +56,14 @@ class usersModel
 
 	// -- Check new username to see if one already exists in the database -- //
 	public function check_user($new_user){
-		$statement = $this->db->prepare("SELECT user_name AS id FROM users");
+		$statement = $this->db->prepare("SELECT user_name FROM users WHERE (user_name = '$new_user')");
 		if($statement->execute()){
-			$rows = $statement->fetchALL(PDO::FETCH_ASSOC);
-			foreach($rows as $row){
-				if($new_user == $row['id']){
-					return true;
-				}else{
-					return false;
-				}
+			$euser = $statement->rowCount();
+			echo $euser;
+			if($euser > 0){
+				return true;
+			}else{
+				return false;
 			}
 		}
 	}
