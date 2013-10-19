@@ -17,3 +17,8 @@ Instructions for viewing the API Proof of Concept:
 3.  Ensure there is a connection to the Internet.
 4.  Enter a search term to use.  Good suggestion is some sort of ingredient, such as crab, lettuce, whatever you may be in the mood to eat at the moment.
 5.  Press the "Submit" button and the total number of recipes found will be displayed, as returned from the Yummly API.
+
+Update as of 10/18/13
+
+1.  Updated CRUD to include writing to database for new users.  Includes creation of random salting and proper hashing of password prior to storage in database.
+2.  Working on checking with database for already registered usernames. Currently returns an error that states there was an error creating the user account, but does not successfully stop if username is already in database.
