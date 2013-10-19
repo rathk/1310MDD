@@ -75,7 +75,7 @@ if(isset($_POST['submit_new'])){
     //Check to see if the new username has been set and that it is not empty.
     if(isset($_POST['new_username']) && ($_POST['new_username'] !="")){
         //Calls sanitation function before setting to variable.
-        $new_user = $users->val_critera($_POST['new_username']);
+        $new_user = $users->val_criteria($_POST['new_username']);
         //If the $new_user does not contain all of the valid characters and length; display an error message.
         if($users->val_user($new_user)){
             $error_new_user = "Please enter a valid username.";
