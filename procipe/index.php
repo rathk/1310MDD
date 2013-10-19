@@ -117,14 +117,15 @@ if(isset($_POST['submit_new'])){
     }
     //Check for and notify user of errors in form data.
     if($error_new_user !="" || $error_new_pass !="" || $error_email !=""){
+        $error_array = array();
         if($error_new_user !=""){
-            echo $error_new_user;
+            $error_array[0] = $error_new_user;
         }
         if($error_new_pass !=""){
-            echo $error_new_pass;
+            $error_array[1] = $error_new_pass;
         }
         if($error_email !=""){
-            echo $error_email;
+            $error_array[2] = $error_email;
         }
     //Send information to database if no errors exist.
     }else if($error_new_user == "" && $error_new_pass == "" && $error_email == ""){
@@ -149,7 +150,7 @@ if ($_SESSION['start'] == NULL && $new_user_success !='new'){
 
 /* -- New User Handling -- */
 if($new_user_success == 'new'){
-    $views->getView('views/newAccount.inc');
+    $views->getView('views/newAccount.inc', $error_array);
 }
 /* -- End New User Hanlding -- */
 $views->getView('views/footer.inc');
