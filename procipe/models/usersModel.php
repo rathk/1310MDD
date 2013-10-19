@@ -54,6 +54,22 @@ class usersModel
 		}
 	}// -- End username validation -- //
 
+	// -- Check new username to see if one already exists in the database -- //
+	public function check_user($new_user){
+		$statement = $this->db->prepare("SELECT user_name AS id FROM users");
+		if($statement->execute()){
+			$rows = $statement->fetchALL(PDO::FETCH_ASSOC);
+			foreach($rows as $row){
+				if($new_user == $row['id']){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+	}
+	// -- End check new username -- //
+
 	// -- Validate password to length & allowable character requirements -- //
 	public function val_pass($user_pass){
 		if(strlen($user_pass)<6){
@@ -65,11 +81,19 @@ class usersModel
         }
 	}// -- End password validation -- //
 
-	// -- Validate email address to allowable format -- //
-	public function val_email($new_email){
-		
+	// -- Take validated user input for new user account, salt and add to database. -- //
+	public function make_user($new_user, $new_pass, $new_first, $new_last, $valid_email){
+
+		//Create random salt with a length of 10.
+		$new_usodium = substr(str_shuffle(MD5(microtime())), 0, 10);
+		$statement = $this->db->prepare("INSERT INTO users (user_name, user_salt, user_pass, first_name, last_name, email) VALUES ('$new_user', '$new_usodium', MD5(CONCAT('$new_usodium', '$new_pass')), '$new_first', '$new_last', '$valid_email')");
+		if($statement->execute()){
+			return "Your user account has been successfully created.";
+		}else{
+			return "Error creating user account.  Please try again.";
+		}
 	}
-	// -- End validate email address to allowable format -- //
+	// -- End add new user account to database. -- //
 
 	// -- Authorize validated username and password -- //
 	public function authorize_user($user_name, $user_pass){
