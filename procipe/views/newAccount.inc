@@ -6,7 +6,7 @@
 			<form action="" method="post">
 				<div class="row">
 					<div class="large-9 columns">
-						<p>Usernames must be at least 5 characters and include at least 1 upper case letter and 1 number.</p>
+						<p>Usernames must be at least 5 characters and include at least 1 upper case letter and 1 number.  <?php echo $error_new_user; ?></p>
 						<label for="new_username">Username:</label>
 						<input type="text" name="new_username" id="new_username" maxlength="20" placeholder="Choose a username" /><br/>
 					</div>
