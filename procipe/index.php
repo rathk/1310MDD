@@ -13,7 +13,7 @@ $access = $_GET['auth'];
 /* -- End view, header and database connection code --*/
 
 /* -- Account Management -- */
-$new_user = $_GET['na'];
+$new_user_success = $_GET['na'];
 $quit = $_GET['rq'];
 /* -- End Account Management -- */
 
@@ -72,6 +72,7 @@ if(isset($_POST['submit_new'])){
     //Set error message to empty string.
     $error_new_user = "";
     $error_new_pass = "";
+    $error_email = "";
     //Check to see if the new username has been set and that it is not empty.
     if(isset($_POST['new_username']) && ($_POST['new_username'] !="")){
         //Calls sanitation function before setting to variable.
@@ -80,6 +81,11 @@ if(isset($_POST['submit_new'])){
         if($users->val_user($new_user)){
             $error_new_user = "Please enter a valid username.";
         }
+        if($users->check_user($new_user)){
+            $error_new_user = "Please choose another username, the one you chose is already taken.";
+        }
+    }else if($_POST['new_username'] == ""){
+        $error_new_user = 'Please enter a valid username it is empty.';
     }
     //Check to see if the new password has been set and that it is not empty.
     if(isset($_POST['new_password']) && ($_POST['new_password'] !="")){
@@ -105,19 +111,44 @@ if(isset($_POST['submit_new'])){
         $valid_email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         if($valid_email){
             $new_email = $_POST['email'];
+        }else{
+            $error_email = "Please enter a valid email address.";
+        }
+    }
+    //Check for and notify user of errors in form data.
+    if($error_new_user !="" || $error_new_pass !="" || $error_email !=""){
+        if($error_new_user !=""){
+            echo $error_new_user;
+        }
+        if($error_new_pass !=""){
+            echo $error_new_pass;
+        }
+        if($error_email !=""){
+            echo $error_email;
+        }
+    //Send information to database if no errors exist.
+    }else if($error_new_user == "" && $error_new_pass == "" && $error_email == ""){
+        echo $new_user, $new_pass, $new_first, $new_last, $valid_email;
+        $create_user = $users->make_user($new_user, $new_pass, $new_first, $new_last, $valid_email);
+        if($create_user == "Your user account has been successfully created."){
+            //$views->getView('views/added.inc');
+            echo $create_user;
+        }
+        if($create_user == "Error creating user account.  Please try again."){
+            echo $create_user;
         }
     }
 }
 /* -- End New User Registration Form handling -- */
 
 /* -- Display login form if no Session information is present --*/
-if ($_SESSION['start'] == NULL && $new_user !='new'){
+if ($_SESSION['start'] == NULL && $new_user_success !='new'){
 	$views->getView('views/login.inc');
 }
 /* -- End login form display code -- */
 
 /* -- New User Handling -- */
-if($new_user == 'new'){
+if($new_user_success == 'new'){
     $views->getView('views/newAccount.inc');
 }
 /* -- End New User Hanlding -- */
