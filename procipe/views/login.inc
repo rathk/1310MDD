@@ -12,6 +12,7 @@ $page_title = "Procipe Login";
 			<form action="" method="post">
 				<div class="row">
 					<div class="large-9 columns">
+						<p style="font-style: italic; color: #0000FF;"><?php echo $data[0]; ?></p>
 						<label for="username">Username:</label><br/>
 						<input type="text" name="username" id="username" maxlength="20" placeholder="Enter Username"/><br/>
 					</div>

@@ -15,6 +15,7 @@ $access = $_GET['auth'];
 /* -- Account Management -- */
 $new_user_success = $_GET['na'];
 $quit = $_GET['rq'];
+$error_array = array();
 /* -- End Account Management -- */
 
 if($quit == 'lo'){
@@ -34,7 +35,7 @@ if(isset($_POST['submit'])){
         $user_name = $users->val_criteria($_POST['username']);
         //If the $user_name does not contain all of the valid characters and length; display an error message.
         if($users->val_user($user_name)){
-            $error="Please enter a valid username or password";
+            $error_array[0]="Please enter a valid username or password";
         }
     }
 
@@ -43,7 +44,7 @@ if(isset($_POST['submit'])){
         //Calls sanitation function before setting to variable.
         $user_pass = $users->val_criteria($_POST['password']);
         if($users->val_pass($user_pass)){
-            $error = "Please enter a valid username or password.";
+            $error_array[0]= "Please enter a valid username or password.";
         }
     }
 
@@ -57,12 +58,10 @@ if(isset($_POST['submit'])){
             $views->getView('views/search.inc');
             //exit;
         }else{
-            $error = 'Please enter a valid username or password';
-            echo $error;
+            $error_array[0] = 'Please enter a valid username or password';
         }
     }else{
-        $error = 'Please enter a valid username or password';
-        echo $error;
+        $error_array[0] = 'Please enter a valid username or password';
     }
 }
 /* -- End Login Form handling -- */
@@ -117,7 +116,6 @@ if(isset($_POST['submit_new'])){
     }
     //Check for and notify user of errors in form data.
     if($error_new_user !="" || $error_new_pass !="" || $error_email !=""){
-        $error_array = array();
         if($error_new_user !=""){
             $error_array[0] = $error_new_user;
         }
@@ -144,7 +142,7 @@ if(isset($_POST['submit_new'])){
 
 /* -- Display login form if no Session information is present --*/
 if ($_SESSION['start'] == NULL && $new_user_success !='new'){
-	$views->getView('views/login.inc');
+	$views->getView('views/login.inc', $error_array);
 }
 /* -- End login form display code -- */
 
