@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
         $authorized = $users->authorize_user($user_name, $user_pass);
         if($authorized){
             session_start();
-            $_SESSION['start'] = $user_name;
+            $_SESSION['start'] = $users->getName($user_name);
             $_SESSION['user_id'] = $users->getUser($user_name);
             $views->getView('views/search.inc');
             //exit;
@@ -127,14 +127,13 @@ if(isset($_POST['submit_new'])){
         }
     //Send information to database if no errors exist.
     }else if($error_new_user == "" && $error_new_pass == "" && $error_email == ""){
-        echo $new_user, $new_pass, $new_first, $new_last, $valid_email;
         $create_user = $users->make_user($new_user, $new_pass, $new_first, $new_last, $valid_email);
         if($create_user == "Your user account has been successfully created."){
-            //$views->getView('views/added.inc');
-            echo $create_user;
+            $success_message[0]=$create_user;
+            $views->getView('views/added.inc', $success_message);
         }
         if($create_user == "Error creating user account.  Please try again."){
-            echo $create_user;
+            $error_array[3] = $create_user;
         }
     }
 }
@@ -147,7 +146,7 @@ if ($_SESSION['start'] == NULL && $new_user_success !='new'){
 /* -- End login form display code -- */
 
 /* -- New User Handling -- */
-if($new_user_success == 'new'){
+if($new_user_success == 'new' && $success_message[0] == ""){
     $views->getView('views/newAccount.inc', $error_array);
 }
 /* -- End New User Hanlding -- */
