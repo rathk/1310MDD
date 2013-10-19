@@ -17,6 +17,17 @@ class usersModel
 	}// -- End construct function -- //
 
 	// -- Session Handling Database Calls -- //
+	public function getName($user_name){
+		$statement = $this->db->prepare("SELECT first_name AS id FROM users WHERE user_name = '$user_name'");
+		if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($rows as $row){
+				return $row['id'];
+			}
+		}else{
+			return 'unknown';
+		}
+	}
 	public function getUser($user_name){
 		$statement = $this->db->prepare("SELECT id AS id FROM users WHERE user_name = '$user_name'");
 		if($statement->execute()){
