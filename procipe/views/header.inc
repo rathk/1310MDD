@@ -9,4 +9,18 @@
 	<link rel="stylesheet" type="text/css" href="../foundation-4.3.1/css/foundation.css" />
 	<script src="foundation-4.3.1/js/vendor/custom.modernizr.js"></script>
 </head>
+<header class="full-width header-area">
+	<div class="row">
+		<div class="small-12 columns">
+			<a href="index.php"><img src="assets/procipe_logo150x70.png"></a>
+		</div>
+	</div>
+</header>
+<div class="full-width navigation-area">
+    <div class="row">
+        <div class="large-12 columns">
+            <nav class="top-bar"></nav>
+        </div>
+    </div>
+</div>
 <body>

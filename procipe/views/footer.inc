@@ -21,15 +21,16 @@
   <script>
     $(document).foundation();
   </script>
-<div class="row">
-	<div class="small-3 large-centered columns">
-		<footer><small style="color:white;">&copy; 2013 Rath Kaikala - MDD1310 Online</small></footer>
-	</div>
-</div>
-<div class="row">
-	<div class="small-4 large-centered columns">
-		<p><small style="color:white;">Full Sail University Student Mobile Design &amp; Development Course</small></p>
-		<p></p>
+<div class="full-width footer-area">
+	<div class="row">
+    <div class="large-12 columns">
+      <div class="large-6 columns">
+        <p><small style="color:white;">Full Sail University Student Mobile Design &amp; Development Course</small></p>
+      </div>
+      <div class="large-3 columns">
+		    <p><small style="color:white;">&copy; 2013 Rath Kaikala - MDD1310 Online</small></p>
+      </div>
+    </div>
 	</div>
 </div>
 </body>

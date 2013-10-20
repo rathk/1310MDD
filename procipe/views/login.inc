@@ -6,8 +6,7 @@ $page_title = "Procipe Login";
 	<p></p>
 	<div class="small-6 large-centered columns">
 		<div class="panel">
-			<h1>Procipe</h1>
-			<h6 class="subheader">Powered by the Yummly API<h6>
+			<h3>Log In</h3>
 			<p>Procipe is a FREE recipe search app that lets you find over 170,000 great recipes!  Powered by the Yummly API you can search &amp; view recipes, save your favorite recipes and create shopping lists from those recipes.  Free to sign up, give it a try today!</p>
 			<form action="" method="post">
 				<div class="row">
