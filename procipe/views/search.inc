@@ -1,12 +1,14 @@
 <?php session_start();
 echo $_SESSION['id']; 
 $greeting_name = $_SESSION['user'];
+$searched = $_POST['recipe_search'];
 ?>
 <?php echo $greeting_name; ?>
 
 <div class="row">
 	<div class="large-8 columns">
 		<div class="panel">
+			<p>Search powered by <img src="http://static.yummly.com/api-logo.png" /></p>
 			<form action="?auth=affirm" method="post">
 				<div class="row collapse">
 					<div class="small-10 columns">
@@ -19,7 +21,7 @@ $greeting_name = $_SESSION['user'];
 			</form>
 			<?php
 			if(!empty($data)){
-				echo "<p>Total Recipe Search Results: ".$data->totalMatchCount."</p>";
+				echo "<p>Total Results Searching for <strong> '".$searched."</strong>': ".$data->totalMatchCount."</p>";
 				echo "<table border='1'>";
 					for($counter=0; $counter<count($data->matches); $counter++){
 						echo "<tr>";

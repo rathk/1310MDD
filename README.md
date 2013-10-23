@@ -31,3 +31,4 @@ Update as of 10/22/13
 2.  Updated the search view to include pagination when search populates the results.  Pagination is present but does not currently function, still working on this portion of the functionality for the search page.
 3.  Working on linking the search results to show the detail view of the recipe that was clicked on.
 4.  CSS framework is being utilized across the app; however still working on optimizing for mobile/smaller screen/devices.
+5.  Still working on dealing with recipes that are returned that do not have a photo associated with it in the API data.
