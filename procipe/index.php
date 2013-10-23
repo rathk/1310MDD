@@ -5,6 +5,8 @@ require_once 'models/usersModel.php';
 include 'models/viewModel.php';
 /* -- End required and includes -- */
 
+$page_title = "Procipe Recipe Search";
+
 /* -- Initiate views, header & database connection-- */
 $views = new viewModel();
 $users = new usersModel(MY_DSN, MY_USER, MY_PASS);
@@ -49,14 +51,18 @@ if(isset($_POST['submit'])){
     }
 
     //Check to make sure no error is present before submitting to database.
-    if($error == ""){
+    if($error == ""  && $_SESSION['user'] == NULL){
         $authorized = $users->authorize_user($user_name, $user_pass);
         if($authorized){
-            session_start();
-            $_SESSION['start'] = $users->getName($user_name);
+            $ses_id = session_id();
+            if(empty($ses_id)){
+                session_start();
+            $_SESSION['user'] = $users->getName($user_name);
             $_SESSION['user_id'] = $users->getUser($user_name);
+            $_SESSION['id'] = $ses_id;
+            echo "SID: ".SID."<br>session_id(): ".session_id()."<br>COOKIE: ".$_COOKIE["PHPSESSID"];
+            }
             $views->getView('views/search.inc');
-            //exit;
         }else{
             $error_array[0] = 'Please enter a valid username or password';
         }
@@ -139,8 +145,20 @@ if(isset($_POST['submit_new'])){
 }
 /* -- End New User Registration Form handling -- */
 
+/* -- Recipe Search Functionality -- */
+if (isset($_POST['submit_recipe_search'])) {
+    $searchterm = $_POST['recipe_search'];
+    $takeout = array(" ", "and", "&");
+    $searchterm = str_replace($takeout, "%20", $searchterm);
+    $url = 'http://api.yummly.com/v1/api/recipes?_app_id=aca40fa4&_app_key=8f690f6e964ea735eff7544215ab9585&q='.$searchterm;
+    $response = file_get_contents($url);
+    $output = json_decode($response);
+    $views->getView('views/search.inc', $output);
+}
+/* -- End Recipe Search Functionality -- */
+
 /* -- Display login form if no Session information is present --*/
-if ($_SESSION['start'] == NULL && $new_user_success !='new'){
+if ($_SESSION['user'] == NULL && $new_user_success !='new' && $access != 'affirm'){
 	$views->getView('views/login.inc', $error_array);
 }
 /* -- End login form display code -- */

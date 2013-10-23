@@ -13,9 +13,9 @@ class viewModel
 		include $pagename;
 	}
 
-	public function changeView($page)
+	public function sendData($pagename='', $sdata=array())
 	{
-		//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?'.$page'>';
+		
 	}
 }
 ?>

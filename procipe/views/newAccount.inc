@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="small-7 large-centered columns">
 		<div class="panel">
-			<h1 class="text-center">Create Your Procipe Account</h1>
+			<h3 class="text-center">Create Your Account</h3>
 			<h6 class="subhead text-center">Please fill out the form to create a Procipe account.</h6><p style="font-style: italic; color: #0000FF;"><?php echo $data[3] ;?></p>
 			<form action="" method="post">
 				<div class="row text-center">

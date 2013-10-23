@@ -1,0 +1,11 @@
+.top-bar{
+	background-color: #b69866;
+}
+.top-bar-section ul{
+	background: none;
+	text-transform: uppercase;
+}
+
+.top-bar-section li a:not(.button){
+	background: none;
+}
