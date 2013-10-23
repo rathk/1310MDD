@@ -8,7 +8,7 @@ $searched = $_POST['recipe_search'];
 <div class="row">
 	<div class="large-8 columns">
 		<div class="panel">
-			<p>Search powered by <img src="http://static.yummly.com/api-logo.png" /></p>
+			<p>Search powered by <img src="assets/api-logo.png" /></p>
 			<form action="?auth=affirm" method="post">
 				<div class="row collapse">
 					<div class="small-10 columns">
@@ -22,10 +22,14 @@ $searched = $_POST['recipe_search'];
 			<?php
 			if(!empty($data)){
 				echo "<p>Total Results Searching for <strong> '".$searched."</strong>': ".$data->totalMatchCount."</p>";
-				echo "<table border='1'>";
+				echo "<table border='1' class='small-12 columns'>";
 					for($counter=0; $counter<count($data->matches); $counter++){
 						echo "<tr>";
-						echo "<td><img src=".$data->matches[$counter]->smallImageUrls[0]." /></td>";
+						if(!empty($data->matches[$counter]->smallImageUrls[0])){
+							echo "<td><img src=".$data->matches[$counter]->smallImageUrls[0]." /></td>";
+						}else{
+							echo"<td><img src='assets/no-img.png' />";
+						}
 						echo "<td><strong>".$data->matches[$counter]->recipeName."</strong></td>";
 						echo "</tr>";
 					}
@@ -57,4 +61,3 @@ $searched = $_POST['recipe_search'];
 		</div>
 	</div>
 </div>
-<p>Successful Login!</p>

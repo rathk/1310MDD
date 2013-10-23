@@ -9,3 +9,7 @@
 .top-bar-section li a:not(.button){
 	background: none;
 }
+
+.api-attribution{
+	background: #FFFFFF;
+}
