@@ -1,7 +1,11 @@
 <?php session_start();
 echo $_SESSION['id']; 
 $greeting_name = $_SESSION['user'];
-$searched = $_POST['recipe_search'];
+if($_POST['recipe_search'] != NULL){
+	$searched = $_POST['recipe_search'];
+}else{
+	$searched = $_GET['searched'];
+}
 ?>
 <?php echo $greeting_name; ?>
 
@@ -38,7 +42,12 @@ $searched = $_POST['recipe_search'];
 				echo "<tr>";
 					for($pages=1; $pages<6; $pages++){
 						echo "<td>";
-						echo "<a href=''>".$pages."</a>";
+						$next = $pages*10;
+						if($next == $_GET['nextlist']){
+							echo $pages;
+						}else{
+							echo "<a href='?nextlist=".$next."&searched=".$searched."'>".$pages."</a>";
+						}
 						echo "</td>";
 					}
 				echo "</tr>";

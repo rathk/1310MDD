@@ -1,3 +1,4 @@
+<!-- Notification Page showing that the user account has been successfully added -->
 <div class="row">
 	<div class="small-12 large-centered columns">
 		<div class="panel">

@@ -14,6 +14,8 @@ $views->getView('views/header.inc');
 $access = $_GET['auth'];
 $results = $_GET['details'];
 $recipeID = $_GET['recipeID'];
+$newPage = $_GET['nextlist'];
+$searchterm=$_GET['searched'];
 /* -- End view, header and database connection code --*/
 
 /* -- Account Management -- */
@@ -22,12 +24,14 @@ $quit = $_GET['rq'];
 $error_array = array();
 /* -- End Account Management -- */
 
+/* -- Logout Processes -- */
 if($quit == 'lo'){
-    unset($_SESSION['start'], $_SESSION['user_id']);
+    unset($_SESSION['user'], $_SESSION['user_id']);
     session_destroy();
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
     exit;
 }
+/* -- End Logout Processes -- */
 
 /* -- Login Form handling -- */
 if(isset($_POST['submit'])){
@@ -159,6 +163,15 @@ if (isset($_POST['submit_recipe_search'])) {
 }
 /* -- End Recipe Search Functionality -- */
 
+/* -- Pagination for recipe search results -- */
+if($newPage>0){
+    $url = 'http://api.yummly.com/v1/api/recipes?_app_id=aca40fa4&_app_key=8f690f6e964ea735eff7544215ab9585&q='.$searchterm.'&start='.$newPage;
+    $response = file_get_contents($url);
+    $output = json_decode($response);
+    $views->getView('views/search.inc', $output);
+}
+/* -- End Pagination for recipe search results -- */
+
 /* -- Specific Recipe Pull from API -- */
 if($results == 'true'){
     $url = 'http://api.yummly.com/v1/api/recipe/'.$recipeID.'?_app_id=aca40fa4&_app_key=8f690f6e964ea735eff7544215ab9585';
@@ -169,7 +182,7 @@ if($results == 'true'){
 /* -- End specific recipe pull from API -- */
 
 /* -- Display login form if no Session information is present --*/
-if ($_SESSION['user'] == NULL && $new_user_success !='new' && $access != 'affirm' && $results != 'true'){
+if ($_SESSION['user'] == NULL && $new_user_success !='new' && $access != 'affirm' && $results != 'true' && $newPage == NULL){
 	$views->getView('views/login.inc', $error_array);
 }
 /* -- End login form display code -- */
