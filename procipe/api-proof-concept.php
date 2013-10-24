@@ -12,7 +12,7 @@
 	</form>
 
 <?php
-if (isset($_POST['search'])) {
+/*if (isset($_POST['search'])) {
 	$searchterm = $_POST['search'];
 	$takeout = array(" ", "and", "&");
 	$searchterm = str_replace($takeout, "%20", $searchterm);
@@ -37,7 +37,28 @@ if (isset($_POST['search'])) {
 			}
 		}
 	}
-}
+}*/
+$url = 'http://api.yummly.com/v1/api/recipe/Spanish-style-garlic-shrimp-298317?_app_id=aca40fa4&_app_key=8f690f6e964ea735eff7544215ab9585';
+$response2= file_get_contents($url);
+$output2 = json_decode($response2,true);
+foreach ($output2 as $key => $value) {
+		echo "$key<br>\n";
+		foreach ($value as $key2 => $value2) {
+			echo "--->lvl1--> $key2 => $value2<br>\n";
+			foreach($value2 as $key3 => $value3){
+				echo "------>lvl2---> $key3 => $value3<br>\n";
+				foreach($value3 as $key4 => $value4){
+					echo "--------->lvl3----> $key4 => $value4<br>\n";
+					foreach($value4 as $key5 => $value5){
+						echo "------------>lvl4-----> $key5 => $value5<br>\n";
+						foreach($value5 as $key6 => $value6){
+							echo "--------------->lvl5-------> $key6 => $value6<br>\n";
+						}
+					}
+				}
+			}
+		}
+	}
 ?>
 
 </body>

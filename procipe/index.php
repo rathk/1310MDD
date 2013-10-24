@@ -12,6 +12,8 @@ $views = new viewModel();
 $users = new usersModel(MY_DSN, MY_USER, MY_PASS);
 $views->getView('views/header.inc');
 $access = $_GET['auth'];
+$results = $_GET['details'];
+$recipeID = $_GET['recipeID'];
 /* -- End view, header and database connection code --*/
 
 /* -- Account Management -- */
@@ -157,8 +159,17 @@ if (isset($_POST['submit_recipe_search'])) {
 }
 /* -- End Recipe Search Functionality -- */
 
+/* -- Specific Recipe Pull from API -- */
+if($results == 'true'){
+    $url = 'http://api.yummly.com/v1/api/recipe/'.$recipeID.'?_app_id=aca40fa4&_app_key=8f690f6e964ea735eff7544215ab9585';
+    $response = file_get_contents($url);
+    $output = json_decode($response);
+    $views->getView('views/results.inc', $output);
+}
+/* -- End specific recipe pull from API -- */
+
 /* -- Display login form if no Session information is present --*/
-if ($_SESSION['user'] == NULL && $new_user_success !='new' && $access != 'affirm'){
+if ($_SESSION['user'] == NULL && $new_user_success !='new' && $access != 'affirm' && $results != 'true'){
 	$views->getView('views/login.inc', $error_array);
 }
 /* -- End login form display code -- */

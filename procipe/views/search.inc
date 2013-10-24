@@ -30,10 +30,9 @@ $searched = $_POST['recipe_search'];
 						}else{
 							echo"<td><img src='assets/no-img.png' />";
 						}
-						echo "<td><strong>".$data->matches[$counter]->recipeName."</strong></td>";
+						echo "<td><strong><a href='?details=true&recipeID=".$data->matches[$counter]->id."'>".$data->matches[$counter]->recipeName."</a></strong></td>";
 						echo "</tr>";
 					}
-				#echo "<tr><img src=".$data->matches[2]->smallImageUrls[0]." /></tr>";
 				echo "</table>";
 				echo "<table>";
 				echo "<tr>";
