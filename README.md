@@ -8,9 +8,9 @@ SQL Dump file names include the date the dump was created.  Ensure that you are 
 The most current SQL dump as of 10/22/13 is 'procipe10-12-138-56 PM.sql'.
 
 Testing Username: Tester
-Testing Password: Password@
+Testing Password: Password@1
 
-There are other users entered into the database to utilize for testing; however you can also create your own users by filling out the form on the app to create a new user, then use your new account to test the app.
+There are other users entered into the database to utilize for testing; however you can also create your own users by filling out the form on the app to create a new user, then use your new account to test the app.  All users listed in the database have the same password as listed for the Testing Password.
 
 Instructions for viewing the API Proof of Concept:
 
@@ -32,3 +32,10 @@ Update as of 10/22/13
 3.  Working on linking the search results to show the detail view of the recipe that was clicked on.
 4.  CSS framework is being utilized across the app; however still working on optimizing for mobile/smaller screen/devices.
 5.  Still working on dealing with recipes that are returned that do not have a photo associated with it in the API data.
+
+Update as of 10/23/13
+
+1.  Search results are now listed in groups of 10, with working pagination across the bottom up to 5 pages deep.
+2.  Detailed view of the selected recipe populates properly with appropriate button leading to the supplying website for preparation instructions.
+3.  Grocery list will have to be a feature added at a later time - just not enough time to get that incorporated into the app before it is due.
+4.  Adding user added content will be a future feature as well - just not enough time to get that incorporated into the app before it is due.
