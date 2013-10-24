@@ -66,7 +66,6 @@ if(isset($_POST['submit'])){
             $_SESSION['user'] = $users->getName($user_name);
             $_SESSION['user_id'] = $users->getUser($user_name);
             $_SESSION['id'] = $ses_id;
-            echo "SID: ".SID."<br>session_id(): ".session_id()."<br>COOKIE: ".$_COOKIE["PHPSESSID"];
             }
             $views->getView('views/search.inc');
         }else{

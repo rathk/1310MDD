@@ -34,7 +34,14 @@
 	</div>
 	<div class="large-4 columns">
 		<div class="panel">
-
+			<div class="row">
+				<div class="small-7 columns">
+					<a href="#" class="small button" onclick="history.go(-1); return false;">Go Back</a>
+				</div>
+				<div class="small-5 columns">
+					<p><a href="?rq=lo" class="small button">Log Out</a></p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,7 @@
 <?php session_start();
-echo $_SESSION['id']; 
-$greeting_name = $_SESSION['user'];
+if(!empty($_SESSION['user'])){
+	$greeting_name = $_SESSION['user'];
+} 
 if($_POST['recipe_search'] != NULL){
 	$searched = $_POST['recipe_search'];
 }else{
@@ -60,7 +61,7 @@ if($_POST['recipe_search'] != NULL){
 		<div class="panel">
 			<div class="row">
 				<div class="small-7 columns">
-					<?php echo "Hello, ".$greeting_name."!"; ?>
+					<a href="#" class="small button" onclick="history.go(-1); return false;">Go Back</a>
 				</div>
 				<div class="small-5 columns">
 					<p><a href="?rq=lo" class="small button">Log Out</a></p>

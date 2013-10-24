@@ -39,3 +39,9 @@ Update as of 10/23/13
 2.  Detailed view of the selected recipe populates properly with appropriate button leading to the supplying website for preparation instructions.
 3.  Grocery list will have to be a feature added at a later time - just not enough time to get that incorporated into the app before it is due.
 4.  Adding user added content will be a future feature as well - just not enough time to get that incorporated into the app before it is due.
+
+Update as of 10/24/13
+1.  Implemented a "Back" button as was mentioned in the peer review by Katie Roberts.
+2.  Unable to re-create the error occurring that Karl Potter and Katie Roberts mentioned in the peer review pertaining to the pagination (thank you Karl for the screen shot).  I do not know specifically what is causing the errors with those dynamically created pagination links...will have to continue to look into that, but will likely not have it fixed by the time the project is due.
+3.  Removed the notification in the right side-bar displaying the logged in user's name.  Having trouble with the session handling, unable to get it to continuously work properly when the search form is submitted, it removes the name and the session variables seem to disappear.  Will likely not have this fixed before the project is due.
+4.  Was unable to implement user CRUD due to time constraints on this project.
